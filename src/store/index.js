@@ -1,14 +1,107 @@
 import { createStore } from 'vuex'
 
 export default createStore({
-  state: {
-  },
-  getters: {
-  },
-  mutations: {
-  },
-  actions: {
-  },
-  modules: {
-  }
+    state: {
+        posts: [
+            {
+                id: 10,
+                author: "Tianna Rocks",
+                authorAvatar: "img/defaultPfp.jpg",
+                displayDate: "Nov 3, 2025",
+                text: "Porsche Spotted",
+                image: "img/porsche.jpg",
+                likes: 0
+            },
+            {
+                id: 9,
+                author: "Jonah Mild",
+                authorAvatar: "img/defaultPfp.jpg",
+                displayDate: "Nov 2, 2025",
+                text: "When will they score our tests in DSA",
+                likes: 0
+            },
+            {
+                id: 8,
+                author: "Garry Bird",
+                authorAvatar: "img/defaultPfp.jpg",
+                displayDate: "Nov 1, 2025",
+                text: "Is it me, or did the food get better in UNI?",
+                likes: 0
+            },
+            {
+                id: 7,
+                author: "Joe Laugh",
+                authorAvatar: "img/defaultPfp.jpg",
+                displayDate: "Nov 1, 2025",
+                text: "My new art peice",
+                image: "img/finevine.jpg",
+                likes: 0
+            },
+            {
+                id: 6,
+                author: "Michael Ander",
+                authorAvatar: "img/defaultPfp.jpg",
+                displayDate: "Oct 31, 2025",
+                text: "How is everyones semester going?",
+                likes: 0
+            },
+            {
+                id: 1,
+                author: "Alex Johnson",
+                authorAvatar: "img/defaultPfp.jpg",
+                displayDate: "Oct 30, 2025",
+                text: "Two ducks chilling on a tree branch",
+                image: "img/2ducks.jpg",
+                likes: 0
+            },
+            {
+                id: 2,
+                author: "Sarah Chen",
+                authorAvatar: "img/defaultPfp.jpg",
+                displayDate: "Oct 29, 2025",
+                text: "Anyone going to the lecture today?",
+                likes: 0
+            },
+            {
+                id: 3,
+                author: "Mike Rodriguez",
+                authorAvatar: "img/defaultPfp.jpg",
+                displayDate: "Oct 27, 2025",
+                text: "It's way too crowded here",
+                image: "img/monalisacrowd.jpg",
+                likes: 0
+            },
+            {
+                id: 4,
+                author: "Emma Davis",
+                authorAvatar: "img/defaultPfp.jpg",
+                displayDate: "Oct 24, 2025",
+                text: "Hi me in 10 years",
+                image: "img/mrbeast.png",
+                likes: 0
+            },
+            {
+                id: 5,
+                author: "John Smith",
+                authorAvatar: "img/defaultPfp.jpg",
+                displayDate: "Oct 21, 2025",
+                text: "Man the moodle test was way too difficult.",
+                likes: 0
+            }
+        ]
+    },
+    getters: {
+        getAllPosts: (state) => state.posts
+    },
+    mutations: {
+        incrementLikes(state, postId) {
+            const post = state.posts.find(post => post.id === postId)
+            if (post) {
+                post.likes++
+            }
+        },
+        resetLikes(state) {
+            state.posts.forEach(post => post.likes = 0 )
+        }
+    },
 })
