@@ -72,7 +72,7 @@ export default {
 }
 
 .reset-likes-button {
-    background-color: #42b983;
+    background-color: red;
     color: white;
     border: none;
     padding: 10px 20px;
