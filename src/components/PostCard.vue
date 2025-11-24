@@ -51,6 +51,10 @@ export default {
     width: 420px;
 }
 
+.post-text {
+    text-align: justify;
+}
+
 @media only screen and (max-width: 500px) {
     .post-card {
         width: 100%;
