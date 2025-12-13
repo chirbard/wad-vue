@@ -29,7 +29,7 @@ export default {
     }
   },
   methods: {
-    handleSignup(event) {
+    async handleSignup(event) {
       event.preventDefault();
       this.errors = [];
 
@@ -42,8 +42,15 @@ export default {
       this.errors.push(...passwordErrors);
 
       if (this.errors.length === 0) {
-        // Navigate to main view on successful validation
-        this.$router.push({ name: 'main' });
+        const success = await this.$store.dispatch('signup', {
+          email: this.email,
+          password: this.password
+        });
+        if (success) {
+          this.$router.push({ name: 'main' });
+        } else {
+          this.errors.push("Signup failed. Please try again.");
+        }
       }
     },
 

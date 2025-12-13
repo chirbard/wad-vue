@@ -11,12 +11,23 @@
 <script>
 import AppHeader from './components/AppHeader.vue'
 import AppFooter from './components/AppFooter.vue'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'App',
   components: {
     AppHeader,
     AppFooter
+  },
+  computed: {
+    ...mapGetters(['isAuthenticated'])
+  },
+  watch: {
+    isAuthenticated(newValue) {
+      if (!newValue && this.$route.meta.requiresAuth) {
+        this.$router.push({ name: 'login' });
+      }
+    }
   }
 }
 </script>
