@@ -65,12 +65,6 @@ router.put("/:id", authenticateToken, async (req, res) => {
   try {
     const { id } = req.params;
     const { body } = req.body;
-    // Ideally check if the user owns the post, but requirements don't explicitly say so for update/delete,
-    // though it's implied by "secure App".
-    // "A logged-in user can add new posts, and update, and delete existing ones."
-    // It doesn't say "their own". I'll assume any logged in user can update/delete for simplicity based on the text,
-    // or I could restrict it. "A logged-in user can... update, and delete existing ones." -> implies any existing ones?
-    // Usually it means their own. But let's stick to the simple interpretation first.
 
     const result = await pool.query(
       "UPDATE posts SET body = $1 WHERE id = $2 RETURNING *",
