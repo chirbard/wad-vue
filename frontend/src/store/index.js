@@ -50,7 +50,6 @@ export default createStore({
           commit("setPosts", mappedPosts);
         } else if (response.status === 401 || response.status === 403) {
           commit("clearToken");
-          // Optionally trigger a redirect or alert here, but clearing token will affect isAuthenticated
         }
       } catch (error) {
         console.error("Error fetching posts:", error);

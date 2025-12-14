@@ -12,18 +12,10 @@
             <img v-if="post.image" :src="post.image" :alt="post.text" class="post-image">
             <p class="post-text">{{ post.text }}</p>
         </div>
-
-        <div class="post-actions">
-            <button @click="likePost" class="like-button">
-                <img src="/img/like.jpg" alt="Like" class="like-icon"> {{ post.likes }}
-            </button>
-        </div>
     </div>
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
-
 export default {
     name: 'PostCard',
     props: {
@@ -32,12 +24,7 @@ export default {
             required: true
         }
     },
-    methods: {
-        ...mapMutations(['incrementLikes']),
-        likePost() {
-            this.incrementLikes(this.post.id)
-        }
-    }
+    methods: {}
 }
 </script>
 

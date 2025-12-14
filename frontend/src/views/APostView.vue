@@ -9,8 +9,8 @@
             </div>
             <div v-if="isUpdating" class="update-form">
                 <textarea v-model="updatedBody"></textarea>
-                <button @click="confirmUpdate">Confirm Update</button>
-                <button @click="isUpdating = false">Cancel</button>
+                <button @click="confirmUpdate" class="default-button">Confirm Update</button>
+                <button @click=" isUpdating = false" class="default-button">Cancel</button>
             </div>
         </div>
         <div v-else>
@@ -95,6 +95,10 @@ button {
 
 .delete-btn {
     background-color: #e74c3c;
+}
+
+.default-button {
+    background-color: #2ecc71;
 }
 
 .update-form {
