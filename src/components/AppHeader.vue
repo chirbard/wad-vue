@@ -3,7 +3,8 @@
         <div class="header-inner">Header component</div>
         <nav class="header-nav">
             <router-link to="/">Main</router-link> |
-            <router-link to="/signup">Signup</router-link>
+            <router-link to="/login">Login</router-link> |
+            <router-link to="/contact">Contact</router-link>
         </nav>
     </header>
 </template>
