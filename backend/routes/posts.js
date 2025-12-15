@@ -65,10 +65,11 @@ router.put("/:id", authenticateToken, async (req, res) => {
   try {
     const { id } = req.params;
     const { body } = req.body;
+    const userId = req.user.id;
 
     const result = await pool.query(
-      "UPDATE posts SET body = $1 WHERE id = $2 RETURNING *",
-      [body, id]
+      "UPDATE posts SET body = $1 WHERE id = $2 AND user_id = $3 RETURNING *",
+      [body, id, userId]
     );
 
     if (result.rows.length === 0) {
@@ -85,9 +86,11 @@ router.put("/:id", authenticateToken, async (req, res) => {
 router.delete("/:id", authenticateToken, async (req, res) => {
   try {
     const { id } = req.params;
+    const userId = req.user.id;
+    
     const result = await pool.query(
-      "DELETE FROM posts WHERE id = $1 RETURNING *",
-      [id]
+      "DELETE FROM posts WHERE id = $1 AND user_id = $2 RETURNING *",
+      [id, userId]
     );
 
     if (result.rows.length === 0) {
